@@ -5,8 +5,11 @@ var desiredLength = 0;
 
 // Write password to the #password input
 function writePassword() {
+    setPwParams();
+
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
+
 
   passwordText.value = password;
 }
@@ -36,6 +39,7 @@ function setPwLength() {
     if (tempDesiredLength >= 8 && tempDesiredLength <= 128) {
       lengthCheck = true;
       desiredLength = tempDesiredLength;
+      console.log("dl in loop " + desiredLength)
     } else {
       alert("Please enter a number between 8 and 128 (inclusive)");
     }
@@ -51,11 +55,14 @@ function setPwChar(type) {
 }
 
 function generatePassword() {
-  var tempPW;
+  var tempPW = '';
 
-  for (var i = 0; i < desiredLength.length; i++) {
-    var charType = Math.floor(Math.random() * desiredChar.length);
-    tempPW += generatedChar(charType);
+  console.log('desiredLength')
+  console.log(desiredLength)
+
+  for (var i = 0; i < desiredLength; i++) {
+    var charTypeIdx = Math.floor(Math.random() * desiredChar.length);
+    tempPW += generateChar(desiredChar[charTypeIdx]);
     console.log("tempPW");
     console.log(tempPW);
   }
@@ -125,23 +132,23 @@ function generateChar(type) {
 
   console.log("type")
   console.log(type)
-  
+
   switch (type) {
-    case "lower":
-      var ranIn = Math.floor(Math.random() * alphaArr.length);
-      genChar = alphaArr[ranIn];
+    case "lowercase":
+      var randIdx = Math.floor(Math.random() * alphaArr.length);
+      genChar = alphaArr[randIdx].toLowerCase();
 
       break;
-    case "upper":
-      var ranIn = Math.floor(Math.random() * alphaArr.length);
-      genChar = alphaArr[ranIn].toLowerCase();
+    case "uppercase":
+      var randIdx = Math.floor(Math.random() * alphaArr.length);
+      genChar = alphaArr[randIdx];
       break;
     case "numeric":
       genChar = Math.floor(Math.random() * 10);
       break;
     case "special":
-      var ranIn = Math.floor(Math.random() * specialArr.length);
-      genChar = specialArr[ranIn];
+      var randIdx = Math.floor(Math.random() * specialArr.length);
+      genChar = specialArr[randIdx];
       break;
   }
 
