@@ -1,7 +1,8 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-var desiredChar = [];
 var desiredLength = 0;
+var desiredChar = [];
+var excludedChar = '';
 
 // Write password to the #password input
 function writePassword() {
@@ -25,6 +26,40 @@ function setPwParams() {
       console.log("char = " + desiredChar);
     }
   }
+
+  if (desiredChar.includes("special")) {
+  var tempArr = [ "!",
+  "@",
+  "#",
+  "$",
+  "%",
+  "^",
+  "&",
+  "*",
+  "(",
+  ")",
+  "_",
+  "+",
+  "{",
+  "}",
+  "|",
+  ":",
+  "<",
+  ">",
+  "?",
+  "-",
+  "=",
+  "[",
+  "]",
+  ";",
+  ",",
+  ".",
+  "/",]
+  excludedChar = prompt("would you like to exclude any special characters? " + tempArr.join(' ') )
+  }
+
+  //console.log("excluded Char" + excludedChar)
+
 }
 
 function setPwLength() {
@@ -147,8 +182,13 @@ function generateChar(type) {
       genChar = Math.floor(Math.random() * 10);
       break;
     case "special":
+        var validChar = false
+        while (!validChar) {
       var randIdx = Math.floor(Math.random() * specialArr.length);
       genChar = specialArr[randIdx];
+
+      if (!excludedChar.includes(genChar)) {validChar = true}
+        }
       break;
   }
 
