@@ -20,12 +20,18 @@ function setPwParams() {
 
   setPwLength();
 
+  var noChars = false;
+  while (!noChars) {
   for (var i = 0; i < charOptions.length; i++) {
     if (setPwChar(charOptions[i])) {
       desiredChar.push(charOptions[i]);
       console.log("char = " + desiredChar);
     }
   }
+  if (desiredChar.length) {
+    noChars = true
+  }
+}
 
   if (desiredChar.includes("special")) {
   var tempArr = [ "!",
