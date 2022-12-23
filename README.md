@@ -2,14 +2,14 @@
 
 ## Table of Contents
 * [Description](#Description)
-* [Deployed Link](#Deployed)
+* [Deployed Link](#Deployed Link)
 * [Screenshot](#Screenshot)
 * [Technologies](#Technologies)
 
 ## Description 
 This is a password generator that prompts a user to select which criteria they would like their password to have then randomizes a new password for them!
 
-## Deployed link
+## Deployed Link
 to view the website click here : https://troynj.github.io/PerfPwProducer/
 
 
