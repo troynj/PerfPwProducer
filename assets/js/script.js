@@ -31,6 +31,9 @@ function setPwParams() {
   if (desiredChar.length) {
     noChars = true
   }
+  else {
+    alert("Must select at least one character type!")
+  }
 }
 
   if (desiredChar.includes("special")) {
